@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="minimum-scale=1.0,maximum-scale=1.0,user-scalable=no"/>
+    <script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+    <title></title>
+    <style>
+        input {
+            float: left;
+        }
+    </style>
+
+</head>
+<body>
+<div class="all">
+    <div>
+        <input type="text" id="title"/>
+
+        <h4>标题</h4>
+    </div>
+    <div>
+        <input type="text" id="zuo"/>
+
+        <h4>作者</h4>
+    </div>
+
+    <textarea name="" id="list" cols="30" rows="10"></textarea>
+
+    <button id="btn">提交</button>
+
+</div>
+
+</body>
+</html>
+<script>
+    $(function(){
+        $('#btn').click(function(){
+            var title=$("#title").val();
+            var zuo=$('#zuo').val();
+            var list=$('#list').val();
+            $.ajax({
+                url:'http://localhost:3000/item/li',
+                type:'post',
+                dataType:'json',
+                data:{
+                    title:title,
+                    zuo:zuo,
+                    list:list
+                },
+                success:function(e){
+                    console.log(e)
+                }
+
+
+            })
+        })
+
+    })
+</script>

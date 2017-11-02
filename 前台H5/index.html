@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="minimum-scale=1.0,maximum-scale=1.0,user-scalable=no"/>
+    <script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+
+    <title></title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+        li{
+            float: left;
+            margin: 0 10px;
+        }
+
+    </style>
+
+</head>
+<body>
+<div id="div"></div>
+</body>
+</html>
+<script>
+    $(function(){
+        $.ajax({
+            url:'http://localhost:3000/item/deil',
+            type:'post',
+            dataType:'json',
+            success:function(e){
+                for(var i in e){
+                    $('body').append("<ul>"+'<li>'+e[i].title+'</li>'+'<li>'+e[i].name+'</li>'+'<li>'+e[i].datail+'</li>'+"</ul>)
+                }
+            }
+        })
+    })
+</script>
